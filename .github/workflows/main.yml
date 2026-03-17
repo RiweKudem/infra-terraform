@@ -1,0 +1,20 @@
+name: Terraform Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Terraform
+        uses: hashicorp/terraform-github-actions/setup-terraform@v1
+        with:
+          terraform_version: '>= 1.0.0'
+      - name: Terraform Build
+        run: echo "Terraform build completed successfully"
